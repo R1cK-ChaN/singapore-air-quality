@@ -1,0 +1,10 @@
+.venv/
+output/
+fonts/*.ttf
+__pycache__/
+.pytest_cache/
+.DS_Store
+.env
+.env.*
+*.log
+*.tmp
