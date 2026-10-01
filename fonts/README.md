@@ -11,18 +11,9 @@
 在仓库根目录运行以下命令可下载相同文件：
 
 ```bash
-python3 - <<'PY'
-import hashlib
-from pathlib import Path
-from urllib.parse import quote
-from urllib.request import urlopen
-
-url = 'https://raw.githubusercontent.com/cntrump/imitation_typeface_fonts/e78093f1b03b8f389815453df4edef809b5d286b/' + quote('京華老宋体v2.002.ttf')
-with urlopen(url, timeout=60) as response:
-    data = response.read()
-assert hashlib.sha256(data).hexdigest() == '35d92af5ac4e9485e8e7749098e67211da5885d2697d95aea979fe4acd19ee2a'
-Path('fonts/KingHwaOldSong.ttf').write_bytes(data)
-PY
+python3 setup_font.py
 ```
+
+下载脚本会校验上述 SHA-256；已安装且校验通过时直接跳过。
 
 `typography.py` 统一设置日期、中文标签、数值、坐标轴和脚注字体。SVG 将文字保存为轮廓，便于在没有安装字体的设备上保持一致。OneMap 底图内置文字及原始标志已经栅格化，不属于可替换文本。该字体缺少 ≥ 字符，图例使用“251及以上”表达同一范围。
